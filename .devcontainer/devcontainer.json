@@ -2,8 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
 	"name": "RK-GH-MLFlow-Local",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"dockerFile": "Dockerfile",
 	"features": {
 		"ghcr.io/devcontainers/features/python:1": {
 			"installTools": true,
