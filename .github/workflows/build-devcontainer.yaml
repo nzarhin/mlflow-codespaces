@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
-    paths: ["Dockerfile", ".devcontainer/*"]
+    paths: ["Dockerfile", ".devcontainer/"]
   pull_request:
     branches: [ "main" ]
     paths: ["Dockerfile"]
@@ -47,7 +47,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{ needs.build_parameters.outputs.container_owner }}/devcontainer-base
+        images: ghcr.io/${{ needs.build_parameters.outputs.container_owner }}/devcontainer-base
         tags: |
           type=sha,format=long,value=${GITHUB_SHA}
 
