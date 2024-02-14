@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
 	"name": "RK-GH-MLFlow-Local",
-	"image": "ghcr.io/mlflow/mlflow:v2.10.2",
+	"image": "ghcr.io/devexpgbb/devcontainer-base:sha-bc2a987bd5d342557cb4efab67d44079d97dd701",
 	// "features": {
 	// 	"ghcr.io/devcontainers/features/python:1": {
 	// 		"installTools": true,
