@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
-    paths: ["Dockerfile"]
+    paths: [".devcontainer/Dockerfile"]
   pull_request:
     branches: [ "main" ]
-    paths: ["Dockerfile"]
+    paths: [".devcontainer/Dockerfile"]
 
 jobs:
   build_parameters:
@@ -64,6 +64,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
+        file: .devcontainer/Dockerfile
         tags: ${{ steps.meta.outputs.tags }}
         push: true
 

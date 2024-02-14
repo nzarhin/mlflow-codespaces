@@ -18,7 +18,8 @@
 		"vscode": {
 			"extensions": [
 				"humao.rest-client",
-                "ms-dotnettools.dotnet-interactive-vscode"
+                "ms-dotnettools.dotnet-interactive-vscode",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}
