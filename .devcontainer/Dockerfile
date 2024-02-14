@@ -2,4 +2,4 @@
 FROM mcr.microsoft.com/devcontainers/python:3.12
 
 # Install PyTorch and MLflow
-RUN pip install torch torchvision mlflow
+RUN pip mlflow
