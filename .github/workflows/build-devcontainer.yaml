@@ -41,6 +41,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
+        tags: ghcr.io/${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:${{ steps.meta.outputs['type=sha'] }}
         push: true
 
     # - name: Publish Container Image as a Status
