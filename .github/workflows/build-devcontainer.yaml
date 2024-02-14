@@ -50,7 +50,7 @@ jobs:
         images: ghcr.io/${{ needs.build_parameters.outputs.container_owner }}/devcontainer-base
         tags: |
           type=sha,format=long,value=${GITHUB_SHA}
-          type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
+          type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
 
     - name: Sign in to GitHub Container Registry
       uses: docker/login-action@v3
