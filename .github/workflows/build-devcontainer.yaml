@@ -47,7 +47,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5
       with:
-        images: ${{needs.build_parameters.outputs.container_owner }}/devcontainer-base
+        images: ${{ needs.build_parameters.outputs.container_owner }}/devcontainer-base
         tags: |
           type=sha,format=long,value=${GITHUB_SHA}
 
@@ -63,8 +63,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        tags: |
-          type=sha-${{ github.sha }}
+        tags: ${{ steps.meta.outputs.tags }}
         push: true
 
     # - name: Publish Container Image as a Status
