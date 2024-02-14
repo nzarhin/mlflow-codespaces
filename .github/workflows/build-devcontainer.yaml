@@ -10,10 +10,31 @@ on:
     paths: ["Dockerfile"]
 
 jobs:
+  build_parameters:
+    name: Define Build Parameters
+    runs-on: ubuntu-22.04
+
+    # We need to share details across job boundaries, expose the step outputs at the job level
+    outputs:
+      container_owner: ${{ steps.build_params.outputs.container_owner }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Define Build Parameters
+        id: build_params
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const containerOwner = `${context.repo.owner}`.toLowerCase();
+            core.setOutput('container_owner', containerOwner);
 
   build:
 
     runs-on: ubuntu-latest
+    needs: 
+      - build_parameters
 
     steps:
     - uses: actions/checkout@v4
@@ -24,9 +45,9 @@ jobs:
 
     - name: Docker metadata
       id: meta
-      uses: docker/metadata-action@v4
+      uses: docker/metadata-action@v5
       with:
-        images: devcontainer-base
+        images: ${{needs.build_parameters.outputs.container_owner }}/devcontainer-base
         tags: |
           type=sha,format=long,value=${GITHUB_SHA}
 
@@ -39,10 +60,11 @@ jobs:
 
     - name: Build and push Docker image
       id: container_build_and_push
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v5
       with:
         context: .
-        tags: ghcr.io/${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:${{ steps.meta.outputs['type=sha'] }}
+        tags: |
+          type=sha-${{ github.sha }}
         push: true
 
     # - name: Publish Container Image as a Status
