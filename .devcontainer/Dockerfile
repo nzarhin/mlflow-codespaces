@@ -1,8 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM ghcr.io/mlflow/mlflow:v2.10.2
-
-# Set the working directory in the container
-WORKDIR /app
+FROM mcr.microsoft.com/devcontainers/python:3.12
 
 # Install PyTorch and MLflow
 RUN pip install torch torchvision mlflow
