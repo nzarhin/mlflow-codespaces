@@ -1,4 +1,4 @@
-# MLFlow with Codespaces
+# MLFlow with GitHub Codespaces
 
 ## Requirements
 - GitHub account
