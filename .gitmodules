@@ -1,3 +1,0 @@
-[submodule "mlflow-example"]
-	path = mlflow-example
-	url = https://github.com/mlflow/mlflow-example.git
