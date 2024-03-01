@@ -3,7 +3,7 @@
 {
 	"name": "RK-GH-MLFlow-Local",
 	"build": {
-		"dockerfile": ".devcontainer/Dockerfile"
+		"dockerfile": "Dockerfile"
 	},
 	// "features": {
 	// 	"ghcr.io/devcontainers/features/python:1": {
