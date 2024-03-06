@@ -13,4 +13,4 @@ RUN mkdir -p ~/miniconda3 && \
     ~/miniconda3/bin/conda init bash
 
 # Fix issue #1 for non-login shells
-RUN    echo "export PATH=/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:$PATH" >> ~/.bashrc
+RUN    echo 'export PATH="/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:$PATH"' >> ~/.bashrc
