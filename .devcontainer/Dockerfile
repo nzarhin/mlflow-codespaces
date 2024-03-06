@@ -10,4 +10,5 @@ RUN mkdir -p ~/miniconda3 && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-py311_24.1.2-0-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && \
     bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 && \
     rm -rf ~/miniconda3/miniconda.sh && \
-    ~/miniconda3/bin/conda init bash
+    ~/miniconda3/bin/conda init bash && \
+    echo "export PATH=/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:$PATH" >> ~/.bashrc
