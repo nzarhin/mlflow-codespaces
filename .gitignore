@@ -1,2 +1,5 @@
 mlruns/
 mlartifacts/
+*.db
+.env
+creditcard.csv
