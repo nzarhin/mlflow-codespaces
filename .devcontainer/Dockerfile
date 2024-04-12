@@ -1,6 +1,8 @@
 # Use an official Python runtime as a parent image
 FROM mcr.microsoft.com/devcontainers/python:3.11-bullseye
 
+RUN apt update
+RUN apt install python3-pip -y
 # Install PyTorch and MLflow
 RUN pip install --no-cache mlflow==2.10.2
 
