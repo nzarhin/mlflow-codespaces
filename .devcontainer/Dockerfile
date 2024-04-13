@@ -14,10 +14,12 @@ RUN pip install --no-cache mlflow==2.10.2
 # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=debian18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc && \
     curl https://packages.microsoft.com/config/debian/11/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list && \
-    sudo apt update && \
+    sudo apt-get update && \
     sudo ACCEPT_EULA=Y apt-get install -y msodbcsql18 && \
     sudo ACCEPT_EULA=Y apt-get install -y mssql-tools18 && \
-    sudo apt-get install -y unixodbc-dev libgssapi-krb5-2
+    sudo apt-get  install -y unixodbc-dev && \
+    sudo apt-get install -y libgssapi-krb5-2 && \
+    sudo apt-get clean -y
 
 
 RUN mkdir -p ~/miniconda3 && \
