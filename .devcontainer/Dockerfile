@@ -8,15 +8,11 @@ RUN pip install --no-cache mlflow==2.10.2
 
 # Install ODBC Drivers for SQL on Debian 11
 # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16&tabs=debian18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline
-RUN curl https://packages.microsoft.com/config/debian/11/prod.list | tee /etc/apt/sources.list.d/mssql-release.list && \
-    apt-get update && \
-    ACCEPT_EULA=Y apt-get install -y msodbcsql18 && \
-    # optional: for bcp and sqlcmd
-    ACCEPT_EULA=Y apt-get install -y mssql-tools18 && \
-    # optional: for unixODBC development headers
-    apt-get install -y unixodbc-dev && \
-    # optional: kerberos library for debian-slim distributions
-    apt-get install -y libgssapi-krb5-2
+RUN curl https://packages.microsoft.com/config/debian/11/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install -y msodbcsql18 && \
+    ACCEPT_EULA=Y apt-get install -y mssql-tools18
+RUN apt-get install -y unixodbc-dev libgssapi-krb5-2
 
 USER vscode
 
