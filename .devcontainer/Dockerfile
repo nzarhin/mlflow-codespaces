@@ -15,9 +15,9 @@ RUN pip install --no-cache mlflow==2.10.2
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc && \
     curl https://packages.microsoft.com/config/debian/11/prod.list | sudo tee /etc/apt/sources.list.d/mssql-release.list && \
     sudo apt update && \
-    sudo RUN ACCEPT_EULA=Y apt-get install -y msodbcsql18 && \
-    ACCEPT_EULA=Y apt-get install -y mssql-tools18 && \
-    apt-get install -y unixodbc-dev libgssapi-krb5-2
+    sudo RUN ACCEPT_EULA=Y sudo apt-get install -y msodbcsql18 && \
+    ACCEPT_EULA=Y sudo apt-get install -y mssql-tools18 && \
+    sudo apt-get install -y unixodbc-dev libgssapi-krb5-2
 
 
 RUN mkdir -p ~/miniconda3 && \
@@ -27,4 +27,7 @@ RUN mkdir -p ~/miniconda3 && \
     ~/miniconda3/bin/conda init bash
 
 # Fix issue #1 for non-login shells
-RUN    echo 'export PATH="/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:$PATH"' >> ~/.bashrc
+RUN echo 'export PATH="/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/share/nvm/current/bin:/usr/local/bin:$PATH"' >> ~/.bashrc
+
+# Add in ~/.local/bin - since we're installing some things from user context not root anymore
+RUN echo 'export PATH="/home/vscode/.local/bin:$PATH"' >> ~/.bashrc
