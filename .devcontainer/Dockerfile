@@ -33,3 +33,9 @@ RUN echo 'export PATH="/usr/local/python/current/bin:/usr/local/py-utils/bin:/us
 
 # Add in ~/.local/bin - since we're installing some things from user context not root anymore
 RUN echo 'export PATH="/home/vscode/.local/bin:$PATH"' >> ~/.bashrc
+
+# Install Azure CLI the quick and easy way
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Install the Azure ML extension for Azure CLI
+RUN az extension add -n ml
