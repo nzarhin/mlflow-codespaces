@@ -9,6 +9,7 @@
 	// 		"version": "3.11"
 	// 	}
 	// },
+	
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [5000, 8080],
